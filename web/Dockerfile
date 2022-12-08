@@ -8,7 +8,7 @@ RUN \
     pcre-dev openssl-dev zlib-dev ncurses-dev readline-dev \
     curl perl  git lua-dev luajit-dev python3 && \
   ln -s /usr/bin/python3 /usr/bin/python && \
-  git clone --recursive --branch v0.11.1 --depth 1 https://github.com/p0pr0ck5/lua-resty-waf.git /tmp/lua-resty-waf && \
+  git clone --recursive --branch v0.11.1 --depth 1 https://github.com/jayvynsong/lua-resty-waf.git /tmp/lua-resty-waf && \
   cd /tmp/lua-* && \
   make lua-aho-corasick lua-resty-htmlentities libinjection decode && \
   make install && \
