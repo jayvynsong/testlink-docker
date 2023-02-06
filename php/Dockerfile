@@ -67,3 +67,4 @@ EXPOSE 9000
 
 # Entry point
 ENTRYPOINT ["/usr/sbin/php-fpm7"]
+CMD ["--nodaemonize"]
