@@ -7,4 +7,3 @@ RUN \
 
 CMD tail -f /dev/null
 
-VOLUME /var/testlink/upload_area /var/testlink/logs
