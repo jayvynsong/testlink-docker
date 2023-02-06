@@ -1,0 +1,3 @@
+[submodule "testlink-code"]
+	path = testlink-code
+	url = ../testlink-code
