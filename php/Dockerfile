@@ -47,6 +47,9 @@ RUN apk update && apk upgrade && \
         php7-ctype \
         php7-zlib && \
     sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf && \
+    sed -i "s#;pid = run/php-fpm7.pid#pid = run/php-fpm7.pid#g" /etc/php7/php-fpm.conf && \
+    sed -i "s#;events.mechanism = epoll#pid = events.mechanism = epoll#g" /etc/php7/php-fpm.conf && \
+    sed -i "s#;log_level = notice#log_level = notice#g" /etc/php7/php-fpm.conf && \
     sed -i -e "s/listen\s*=\s*127.0.0.1:9000/listen = 9000/g" /etc/php7/php-fpm.d/www.conf && \
     sed -i "s/;listen.owner = nobody/listen.owner = nobody/g" /etc/php7/php-fpm.d/www.conf && \
     sed -i "s/;listen.group = nobody/listen.group = nobody/g" /etc/php7/php-fpm.d/www.conf && \
@@ -57,6 +60,12 @@ RUN apk update && apk upgrade && \
     sed -i "s|post_max_size =.*|max_file_uploads = ${PHP_MAX_POST}|" /etc/php7/php.ini && \
     sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/" /etc/php7/php.ini && \
     sed -i "s|;error_log = syslog|error_log = /var/log/php_errors.log|" /etc/php7/php.ini && \
+    sed -i "s|;opcache.enable=1|opcache.enable=1|" /etc/php7/php.ini && \
+    sed -i "s|;opcache.enable_cli=0|opcache.enable_cli=1|" /etc/php7/php.ini && \
+    sed -i "s|;opcache.max_wasted_percentage=5|opcache.max_wasted_percentage=10|" /etc/php7/php.ini && \
+    sed -i "s|;opcache.use_cwd=1|opcache.use_cwd=1|" /etc/php7/php.ini && \
+    sed -i "s|;opcache.validate_timestamps=1|opcache.validate_timestamps=0|" /etc/php7/php.ini && \
+    sed -i "s|;opcache.log_verbosity_level=1|opcache.log_verbosity_level=1|" /etc/php7/php.ini && \
     echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf && \
     echo 'sendmail_path = "/usr/sbin/ssmtp -t"' >> /etc/php7/php.ini && \
     apk del tzdata && \
