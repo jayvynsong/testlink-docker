@@ -50,7 +50,7 @@ RUN apk update && apk upgrade && \
     sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf && \
     sed -i "s#;pid = /run/php-fpm7.pid#pid = /run/php-fpm7.pid#g" /etc/php7/php-fpm.conf && \
     sed -i "s#;events.mechanism = epoll#events.mechanism = epoll#g" /etc/php7/php-fpm.conf && \
-    sed -i "s#;log_level = notice#log_level = debug#g" /etc/php7/php-fpm.conf && \
+    sed -i "s#;log_level = notice#log_level = error#g" /etc/php7/php-fpm.conf && \
     sed -i -e "s/listen\s*=\s*127.0.0.1:9000/listen = 127.0.0.1:9000/g" /etc/php7/php-fpm.d/www.conf && \
     sed -i "s/;listen.owner = nobody/listen.owner = nobody/g" /etc/php7/php-fpm.d/www.conf && \
     sed -i "s/;listen.group = nobody/listen.group = nobody/g" /etc/php7/php-fpm.d/www.conf && \
