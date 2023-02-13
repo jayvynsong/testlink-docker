@@ -68,6 +68,7 @@ RUN apk update && apk upgrade && \
     sed -i "s|;opcache.validate_timestamps=1|opcache.validate_timestamps=0|" /etc/php7/php.ini && \
     sed -i "s|;opcache.log_verbosity_level=1|opcache.log_verbosity_level=1|" /etc/php7/php.ini && \
     sed -i "s|max_execution_time = 32|max_execution_time = 120|" /etc/php7/php.ini && \
+    sed -i "s|session.gc_maxlifetime = 1440|session.gc_maxlifetime = 7200|" /etc/php7/php.ini && \
     echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf && \
     echo 'sendmail_path = "/usr/sbin/ssmtp -t"' >> /etc/php7/php.ini && \
     apk del tzdata && \
