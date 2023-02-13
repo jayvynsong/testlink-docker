@@ -15,6 +15,7 @@ RUN apk update && apk upgrade && \
     apk add --update php7-fpm && \
     apk add --update php7-opcache && \
     apk add --update \
+        php7-mbstring \
         php7-mcrypt \
         php7-soap \
         php7-openssl \
