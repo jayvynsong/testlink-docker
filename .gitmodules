@@ -1,3 +1,5 @@
 [submodule "testlink-code"]
 	path = testlink-code
 	url = ../testlink-code
+[submodule "Submod"]
+	branch = testlink_1_9
