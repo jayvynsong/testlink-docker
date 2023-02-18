@@ -15,6 +15,7 @@ RUN apk update && apk upgrade && \
     apk add --update php7-fpm && \
     apk add --update php7-opcache && \
     apk add --update \
+        php7-mbstring \
         php7-mcrypt \
         php7-soap \
         php7-openssl \
@@ -47,9 +48,9 @@ RUN apk update && apk upgrade && \
         php7-ctype \
         php7-zlib && \
     sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf && \
-    sed -i "s#;pid = run/php-fpm7.pid#pid = run/php-fpm7.pid#g" /etc/php7/php-fpm.conf && \
+    sed -i "s#;pid = /run/php-fpm7.pid#pid = /run/php-fpm7.pid#g" /etc/php7/php-fpm.conf && \
     sed -i "s#;events.mechanism = epoll#events.mechanism = epoll#g" /etc/php7/php-fpm.conf && \
-    sed -i "s#;log_level = notice#log_level = debug#g" /etc/php7/php-fpm.conf && \
+    sed -i "s#;log_level = notice#log_level = error#g" /etc/php7/php-fpm.conf && \
     sed -i -e "s/listen\s*=\s*127.0.0.1:9000/listen = 127.0.0.1:9000/g" /etc/php7/php-fpm.d/www.conf && \
     sed -i "s/;listen.owner = nobody/listen.owner = nobody/g" /etc/php7/php-fpm.d/www.conf && \
     sed -i "s/;listen.group = nobody/listen.group = nobody/g" /etc/php7/php-fpm.d/www.conf && \
@@ -66,6 +67,8 @@ RUN apk update && apk upgrade && \
     sed -i "s|;opcache.use_cwd=1|opcache.use_cwd=1|" /etc/php7/php.ini && \
     sed -i "s|;opcache.validate_timestamps=1|opcache.validate_timestamps=0|" /etc/php7/php.ini && \
     sed -i "s|;opcache.log_verbosity_level=1|opcache.log_verbosity_level=1|" /etc/php7/php.ini && \
+    sed -i "s|max_execution_time = 32|max_execution_time = 120|" /etc/php7/php.ini && \
+    sed -i "s|session.gc_maxlifetime = 1440|session.gc_maxlifetime = 7200|" /etc/php7/php.ini && \
     echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf && \
     echo 'sendmail_path = "/usr/sbin/ssmtp -t"' >> /etc/php7/php.ini && \
     apk del tzdata && \
