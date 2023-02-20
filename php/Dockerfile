@@ -46,6 +46,7 @@ RUN apk update && apk upgrade && \
         php7-pdo_dblib \
         php7-curl \
         php7-ctype \
+        php7-simplexml \
         php7-zlib && \
     sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php7/php-fpm.conf && \
     sed -i "s#;pid = /run/php-fpm7.pid#pid = /run/php-fpm7.pid#g" /etc/php7/php-fpm.conf && \
