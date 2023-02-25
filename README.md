@@ -31,6 +31,7 @@ Container image that has the files for testlink which can be attached as a data 
 * `DEBUG_ON`: Set to `1` to enable ALWAYS dBug()
 * `TEXT_EDITOR`: Which text editor you'd like to use (non-default options: tinymce, or none)
 * `LOG_LEVEL`: NONE, ERROR, INFO, DEBUG, EXTENDED
+* `ENABLE_TEST_AUTOMATION`: ENABLED, DISABLED
 
 ## Demo
 This repository has a docker-compose.yml file that will spin up a sample environment for TestLink.

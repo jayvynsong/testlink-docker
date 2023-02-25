@@ -41,5 +41,8 @@ if (getenv("HISTORY_ON")!==false) {
 if (!empty(getenv("LOG_LEVEL"))) {
 	$g_log_level = getenv("LOG_LEVEL");
 }
+if (!empty(getenv("ENABLE_TEST_AUTOMATION"))) {
+	$tlCfg->exec_cfg->enable_test_automation = getenv("ENABLE_TEST_AUTOMATION");
+}
 
 ?>
